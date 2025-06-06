@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>LANChat</title>
+
+  <!-- 🔐 Token kontrolü -->
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/login.html';
+    }
+  </script>
+</head>
+<body>
+  <h2>LAN Chat</h2>
+  <button onclick="logout()">Çıkış Yap</button><br><br>
+
+  <div id="chat-box" style="border:1px solid #ccc; height:200px; overflow:auto; margin-bottom:10px;"></div>
+
+  <!-- Giriş yapan kullanıcı adı otomatik alınacak -->
+  <input type="text" id="message" placeholder="Mesajınız" />
+  <button onclick="sendMessage()">Gönder</button>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
